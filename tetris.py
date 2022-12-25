@@ -9,6 +9,12 @@ class Tetris:
         self.sprite_group = pg.sprite.Group()
         self.tetramino = Tetromino(self)
 
+    def control(self, pressed_key):
+        if pressed_key == pg.K_LEFT:
+            self.tetramino.move(direction='left')
+        elif pressed_key == pg.K_RIGHT:
+            self.tetramino.move(direction='right')
+
     def draw_grid(self):
         for x in range(FIELD_W):
             for y in range(FIELD_H):
@@ -16,7 +22,8 @@ class Tetris:
                              (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE), 1)
 
     def update(self):
-        self.tetramino.update()
+        if self.app.anim_trigger:
+            self.tetramino.update()
         self.sprite_group.update()
 
     def draw(self):
