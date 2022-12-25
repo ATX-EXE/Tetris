@@ -1,10 +1,13 @@
 from setting import *
 import math
+from tetramino import Tetromino
 
 
 class Tetris:
     def __init__(self, app):
         self.app = app
+        self.sprite_group = pg.sprite.Group()
+        self.tetramino = Tetromino(self)
 
     def draw_grid(self):
         for x in range(FIELD_W):
@@ -13,7 +16,9 @@ class Tetris:
                              (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE), 1)
 
     def update(self):
-        pass
+        self.tetramino.update()
+        self.sprite_group.update()
 
     def draw(self):
         self.draw_grid()
+        self.sprite_group.draw(self.app.screen)
