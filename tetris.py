@@ -28,6 +28,8 @@ class Tetris:
             self.tetramino.move(direction='left')
         elif pressed_key == pg.K_RIGHT:
             self.tetramino.move(direction='right')
+        elif pressed_key == pg.K_UP:
+            self.tetramino.rotate()
 
     def draw_grid(self):
         for x in range(FIELD_W):
