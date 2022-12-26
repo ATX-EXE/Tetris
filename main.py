@@ -1,7 +1,7 @@
 from setting import *
 from tetris import Tetris
 import sys
-
+# 13:03
 
 class App:
     def __init__(self):
